@@ -1,5 +1,7 @@
+import gzip
 import os
 import pandas as pd
+import shutil
 import time
 import logging
 from watchdog.observers.polling import PollingObserver 
@@ -8,6 +10,11 @@ from datetime import datetime
 
 import src.preprocessing as preproc
 import src.scorer as scorer
+
+
+with gzip.open('/app/models/model_catboost.cbm.gz', 'rb') as f_in:
+    with open('/app/models/model_catboost.cbm', 'wb') as f_out:
+        shutil.copyfileobj(f_in, f_out)
 
 logging.basicConfig(
     level=logging.INFO,

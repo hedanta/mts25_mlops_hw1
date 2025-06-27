@@ -83,7 +83,6 @@ DISCLAIMER
 ### Запуск сервиса
 
 1. Скачайте файл `train.csv` из соревнования https://www.kaggle.com/competitions/teta-ml-1-2025 и разместите в директории `./train_data`
-2. Разархивируйте файл из `./models/model_catboost.cbm.gz`, поместите cbm-файл модели в папку `./models`
 2. Соберите образ
 ```bash
 docker build -t fraud_detector .
@@ -98,7 +97,7 @@ docker run -it --rm -v ./input:/app/input \
 т.к. Docker работает с WSL и прокидывать файлы в контейнер тяжело. 
 Например:
 ```ps
-docker run -t --rm -v C:/reps/mts25_mlops_hw1/input:/app/input -v C:/reps/mts25_mlops_hw1/output:/app/output fraud_detector
+docker run -it --rm -v C:/reps/mts25_mlops_hw1/input:/app/input -v C:/reps/mts25_mlops_hw1/output:/app/output fraud_detector
 ```
 4. После запуска сервиса (появления в логах сообщения: `__main__ - INFO - File observer started`) можно приступать к скорингу данных:
  - Разместите файл формата test.csv из соревнования https://www.kaggle.com/competitions/teta-ml-1-2025 в директории `./input`

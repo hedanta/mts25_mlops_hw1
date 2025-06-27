@@ -9,12 +9,12 @@ logger = logging.getLogger(__name__)
 logger.info('Importing pretrained model...')
 
 model = CatBoostClassifier()
-model.load_model('./models/model_catboost.cbm')
 
 model_th = 0.95
 logger.info('Pretrained model imported successfully...')
 
 def make_pred(dt, cat_features, path_to_file):
+    model.load_model('./models/model_catboost.cbm')
     test_pool = Pool(dt, cat_features=cat_features)
     preds = model.predict_proba(test_pool)[:, 1]
     
